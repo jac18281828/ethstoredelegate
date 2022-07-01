@@ -38,7 +38,7 @@ FROM debian:stable-slim
 RUN export DEBIAN_FRONTEND=noninteractive && \
   apt update && \
   apt install -y -q --no-install-recommends \
-  git gnupg2 curl build-essential \  
+  git gnupg2 curl build-essential golang-go \  
   sudo ripgrep \
   ca-certificates apt-transport-https && \
   apt clean && \
@@ -55,7 +55,7 @@ ARG ETH_VERSION=1.10.16
 COPY --from=builder /go-ethereum/go-ethereum-${ETH_VERSION}/build/bin /usr/local/bin
 COPY --chown=jac:jac --from=builder /home/jac/.cargo /home/jac/.cargo
 
-ARG PROJECT=store
+ARG PROJECT=foundrystore
 WORKDIR /workspaces/${PROJECT}
 RUN chown -R jac.jac .
 COPY --chown=jac:jac . .
