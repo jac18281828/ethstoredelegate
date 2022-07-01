@@ -4,7 +4,7 @@ pragma solidity ^0.8.13;
 import "forge-std/Test.sol";
 import "../src/StoreNumber.sol";
 
-contract SimpleStorageTest is Test {
+contract StoreNumberTest is Test {
     StoreNumber storeNumber;
 
     function setUp() public {
