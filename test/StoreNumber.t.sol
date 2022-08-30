@@ -1,23 +1,23 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.15;
 
 import "forge-std/Test.sol";
-import "../src/StoreNumber.sol";
+import "../contracts/StoreNumber.sol";
 
 contract StoreNumberTest is Test {
-    StoreNumber storeNumber;
+    StoreNumber private _storeNumber;
 
     function setUp() public {
-        storeNumber = new StoreNumber();
+        _storeNumber = new StoreNumber(0);
     }
 
     function testGetInitialValue() public {
-        assertTrue(storeNumber.get() == 0);
+        assertEq(_storeNumber.get(), 0);
     }
 
     function testSetValue() public {
         uint256 x = 300;
-        storeNumber.set(x);
-        assertTrue(storeNumber.get() == 300);
+        _storeNumber.set(x);
+        assertEq(_storeNumber.get(), 300);
     }
 }
